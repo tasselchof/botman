@@ -2,6 +2,7 @@
 
 namespace BotMan\BotMan\Messages\Incoming;
 
+use BotMan\BotMan\Exceptions\Core\UnexpectedValueException;
 use Illuminate\Support\Collection;
 use BotMan\BotMan\Messages\Attachments\Location;
 
@@ -204,7 +205,7 @@ class IncomingMessage
     public function getLocation() : Location
     {
         if (empty($this->location)) {
-            throw new \UnexpectedValueException('This message does not contain a location');
+            throw new UnexpectedValueException('This message does not contain a location');
         }
 
         return $this->location;
